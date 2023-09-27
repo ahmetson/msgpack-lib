@@ -49,6 +49,10 @@ func NewReq(messages []string) (message.RequestInterface, error) {
 		return nil, fmt.Errorf("msgpack.Decoder.Decode: %w", err)
 	}
 
+	if message.MultiPart(messages) {
+		request.SetConId(messages[0])
+	}
+
 	req := &Request{
 		&request,
 	}
@@ -68,6 +72,10 @@ func NewReply(messages []string) (message.ReplyInterface, error) {
 	err := dec.Decode(&reply)
 	if err != nil {
 		return nil, fmt.Errorf("msgpack.Decoder.Decode: %w", err)
+	}
+
+	if message.MultiPart(messages) {
+		reply.SetConId(messages[0])
 	}
 
 	rep := &Reply{
