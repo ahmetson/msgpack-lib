@@ -2,7 +2,7 @@ module github.com/ahmetson/msgpack-lib
 
 go 1.21rc2
 
-replace github.com/ahmetson/datatype-lib => D:/sds/common-lib
+replace github.com/ahmetson/datatype-lib => D:/sds/datatype-lib
 
 require (
 	github.com/ahmetson/datatype-lib v0.0.0-20230927140328-4a18b935d09d
